@@ -60,4 +60,19 @@ public class HomeController {
 		//userid->uid->loginid, address->addr->region
 		return "viewinfo";
 	}
+	@RequestMapping("/choose")
+	public String doChoose() {
+		return "choose";
+	}
+	@RequestMapping("/selected")
+	public String doJob(HttpServletRequest hsr, Model model) {
+		String strPath=hsr.getParameter("path");
+		if(strPath.equals("login")) {
+			return "getinfo";
+		}
+		else if(strPath.equals("newbie")) {
+			return "newbie";
+		}
+		return "choose";	
+	}
 }

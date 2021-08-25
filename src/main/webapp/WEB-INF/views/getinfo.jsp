@@ -8,8 +8,8 @@
 </head>
 <body>
 <form method="get" action="/info">
-	아이디:&nbsp;<input type=text name="userid"><br>
-	주소:&nbsp;<input type=text name="address"><br><br>
+	아이디: <input type=text name="userid"><br>
+	주소: <input type=text name="address"><br><br>
 	<input type=submit value="전송">
 </form>
 </body>
