@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -60,6 +62,26 @@ public class HomeController {
 		//userid->uid->loginid, address->addr->region
 		return "viewinfo";
 	}
+	
+//	@RequestMapping("/info")
+//	public String doInfo(@RequestParam("userid") String uid,
+//						 @RequestParam("address") String addr,
+//						 @RequestParam("income") int salary,Model model) {
+//		System.out.println("uid="+uid);
+//		System.out.println("addr="+addr);
+//		model.addAttribute("loginid",uid);
+//		model.addAttribute("region",addr);
+//		//userid->uid->loginid, address->addr->region
+//		return "viewinfo";
+//	}
+//	public String doInfo(ParamList pl, Model model) {
+//		System.out.println("uid="+pl.userid);
+//		System.out.println("addr="+pl.address);
+//		model.addAttribute("loginid",pl.userid);
+//		model.addAttribute("region",pl.address);
+//		return "viewinfo";
+//		
+//	}
 	@RequestMapping("/choose")
 	public String doChoose() {
 		return "choose";
@@ -74,5 +96,11 @@ public class HomeController {
 			return "newbie";
 		}
 		return "choose";	
+	}
+	@RequestMapping("/today/{address}/{userid}")
+	public String showNumber(@PathVariable String address,@PathVariable String userid, Model model) {
+		model.addAttribute("addr", address);
+		model.addAttribute("uid", userid);
+		return "today";
 	}
 }
