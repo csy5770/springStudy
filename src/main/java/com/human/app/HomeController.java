@@ -74,6 +74,7 @@ public class HomeController {
 //		//userid->uid->loginid, address->addr->region
 //		return "viewinfo";
 //	}
+	//Command °´Ã¼.
 //	public String doInfo(ParamList pl, Model model) {
 //		System.out.println("uid="+pl.userid);
 //		System.out.println("addr="+pl.address);
@@ -95,12 +96,15 @@ public class HomeController {
 		else if(strPath.equals("newbie")) {
 			return "newbie";
 		}
-		return "choose";	
+		return "redirect:choose";	
 	}
 	@RequestMapping("/today/{address}/{userid}")
 	public String showNumber(@PathVariable String address,@PathVariable String userid, Model model) {
 		model.addAttribute("addr", address);
 		model.addAttribute("uid", userid);
-		return "today";
+		if(userid.equals("csy")) {
+			return "today";
+		}
+		return "redirect:/choose";
 	}
 }
